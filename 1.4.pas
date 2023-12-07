@@ -1,23 +1,50 @@
-﻿var a: array of integer;
-c: array of integer; 
-i,n,b,d: integer;
+program z_4;
+
+const
+  n = 10;
+
+var
+  a, b: array of integer;  //ГЛОБАЛЬНЫЕ, ФОРМАЛЬНЫЕ
+  i, sum1, sum2: integer; // ЛОКАЛЬНЫЕ, ФОРМАЛЬНЫЕ 
+
+procedure pro10(i, sum1, sum2: integer; var a, b: array of integer); //ФАКТИЧЕСКИЕ
+const                //ПАРАМЕТРЫ ЗНАЧЕНИЙ, ПАРАМЕТРЫ ПЕРЕМЕННЫЕ
+  n = 10;
+var
+  aa, bb: array [1..n] of integer; // ЛОКАЛЬНЫЕ
+
 begin
-  write('Введите длину массива: ');
-  readln(n);
-  setlength(a,n); 
-  setlength(c,n);
-  a := ArrRandom(n,-50,50);
-  c := ArrRandom(n,-50,50);
-  writeln(a);
-  writeln(c);
-  for I:= 0 to n-1 do begin
-  if a[i]>0 then b:=a[i]+b;
-  if c[i]>0 then d:=c[i]+d;
+  writeln('Изначальные массивы:');
+  for i := 1 to n do
+  begin
+    aa[i] := random(-20, 20);
+    bb[i] := random(-20, 20);
   end;
-  if b>d then begin
-    for I:=0 to n-1 do c[i]:=c[i]*10;
-  writeln(c)
-  end
-  else for I:=0 to n-1 do a[i]:=a[i]*10;
-  writeln(a);
+  writeln(aa);
+  writeln(bb);
+  writeln;
+
+  for i := 1 to n do
+  begin
+    if aa[i] > 0 then
+      sum1 := sum1 + aa[i];
+    if bb[i] > 0 then
+      sum2 := sum2 + bb[i];
+  end;
+
+  if sum1 < sum2 then
+    for i := 1 to n do
+      aa[i] := aa[i] * 10
+  else
+    for i := 1 to n do
+      bb[i] := bb[i] * 10;
+
+  // Вывод измененных массивов
+  writeln('Изменённые массивы:');
+  writeln(aa);
+  writeln(bb);
+end;
+
+begin
+  pro10(i, sum1, sum2, a, b);
 end.
