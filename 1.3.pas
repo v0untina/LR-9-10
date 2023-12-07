@@ -1,7 +1,7 @@
-﻿var c: array of integer;
-i,n:integer;
-procedure min(s: array of integer);
-var minn,l : integer;
+﻿var c: array of integer;{}
+i,n:integer; // Глобальные
+procedure min(s{по ссылке}: array of integer); // Формальные
+var minn,l : integer; // Локальные
 begin
   minn:=0;
   for l:=0 to n-1 do begin
@@ -18,5 +18,5 @@ begin
   c[i] := random(101) -50;
   end;
   writeln(c);
-  min(c);
+  min(c); //Фактические
 end.
